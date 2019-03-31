@@ -1,0 +1,23 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+  {% if perms.app.add_message %}
+    <p><a href="{% url 'app:add' %}">新規追加</a></p>
+  {% endif %}
+
+  <hr>
+  {% for message in message_list %}
+    <p>
+    　 {{ message.text }}
+
+      {% if perms.app.change_message %}
+        <a href="{% url 'app:change' message.pk %}">変更する</a>
+      {% endif %}
+    　　
+      {% if perms.app.delete_message %}
+        <a href="{% url 'app:delete' message.pk %}">削除する</a>
+      {% endif %}
+
+   　</p>
+  {% endfor %}
+{% endblock %}
