@@ -5,6 +5,10 @@
     <p><a href="{% url 'app:add' %}">新規追加</a></p>
   {% endif %}
 
+  {% if perms.auth.add_user %}
+    <p><a href="{% url 'app:create_user' %}">ユーザの追加</a></p>
+  {% endif %}
+
   <hr>
   {% for message in message_list %}
     <p>
